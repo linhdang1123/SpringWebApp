@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Success!</h1>
-${user.firstName} ${user.lastName}
+<h1>${success.message}</h1>
 </body>
 </html>

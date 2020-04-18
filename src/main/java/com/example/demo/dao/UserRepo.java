@@ -7,5 +7,5 @@ import com.example.demo.bean.User;
 
 
 public interface UserRepo extends CrudRepository<User,Integer> {
-
+	User findByEmail(String email);
 }
