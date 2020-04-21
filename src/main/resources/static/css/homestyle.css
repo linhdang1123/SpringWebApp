@@ -4,19 +4,19 @@
 
 .menu-toparea li {
   float: left;
+  padding-top :7px;
 }
 
 .menu-toparea li a {
   display: block;
   color: black;
   text-align: center;
-  padding: 5px 10px;
   text-decoration: none;
   color: black;
   font-weight: 300;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 0 30px;
+  padding: 0 20px;
   font-size: 12px;
   line-height: 30px;
   position: relative;
@@ -33,63 +33,131 @@ body {
   background-size:cover;
   background-position: center center;
   height: 100vh;
+  margin : 0 ;
 }
-.menu-area li a {
+.menuNav ul{
+  list-style : none;
+  display : inline-flex;
+  color :#fff;
+}
+.menuNav ul li a {
   text-decoration: none;
+  display : block;
+  text-align : center;
+  padding : 3px;
+  height : 40px;
+}
+.submenu{
+  display : none;
+  
+}
+.menuNav li{
+ list-style-type: none;
+}
+.menuNav ul li:hover .submenu{
+  display : block;
+  position : absolute;
+  background: #efc7b5;
+}
+.menuNav ul li:hover .submenu ul li {
+  padding-top : 5px;
+  border-bottom: 1px solid black;
+  background : white;
+  border-radius : 0;
+  text-align : left;
+  
+}
+.menuNav  ul li ul li a:hover{  
+  color :grey;
+}
+.menuNav ul li{
+    text-decoration: none;
+    height : 50px;
+    
+}
+.menuNav  ul li:hover {
+  background: white;
+  color: #fff;
+  border-radius : 10px;
+  
 }
 
-.menu-area li {
+.menuNav ul li {
+  padding-top :2px;
+  width : 160px;
+  float : left;
   list-style-type: none;
 }
 
 .custom-padding{
-  padding-top: 25px;
+  padding-top: 40px;
 }
 
-nav {
+.menuNav  {
   position: relative;
-  width: calc(100% - 60px);
+  width: calc(100% - 40px);
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 5px 0;
   background: #efc7b5;
   z-index: 1;
-  text-align: right;
-  padding-right: 2%;
+  text-align: center;
+  padding-right: 10%;
+  height :47px;
 }
 
 .logo {
-  width: 15%;
+  width: 13%;
   float: left;
   text-transform: uppercase;
   color: black;
-  font-size: 25px;
-  text-align: left;
-  padding-left: 2%;
+  font-size: 30px;
+  text-align: right;
+  padding : 3px;
+  padding-left :33px;
 }
 
-.menu-area li {
-  display: inline-block;
-}
 
-.menu-area a {
+.menuNav  ul a {
   color: black;
   font-weight: 300;
   letter-spacing: 1px;
   text-transform: uppercase;
   display: block;
-  padding: 0 25px;
-  font-size: 14px;
+  padding: 0 30px;
+  font-size: 16px;
   line-height: 30px;
   position: relative;
   z-index: 1;
+  border-radius : 10px;
 }
-.menu-area a:hover {
-  background: tomato;
+.menuNav  ul li ul {
+	background : tomato;
   color: #fff;
+
+}
+.menuNav  ul li ul li {
+ background : tomato;
+ color: #fff;
+}
+.menuNav  ul li ul li a{
+  font-size : 12px;
+  text-decoration: none;
+  display : block;
+  text-align : center;
+  padding : 13px;
+  height : 40px;
+
 }
 
-.menu-area a:hover:after {
-  transform: translateY(-50%) rotate(-35deg);
+ li:hover:after {
+   color: #fff;
+}
+.menuNav ul li ul{
+  display : none;
+}
+.menuNav  ul li:hover ul {
+   display : block;
+  
 }
 
 nav:before {
@@ -113,17 +181,64 @@ nav:after {
   top: 100%;
   right: 0;
 }
-#search{
-  width : 550px;
-  padding :10px;
-  -webkit-border-radius : 25px;
-  -moz-border-radius : 25px;
-  border-radius : 25px;
-  border : none;
-  font-size : 14px;
-  margin : 2px;
+.menuNav li{
+  padding-top:0;
+}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
 }
 
+.searchTerm {
+  width: 100%;
+  border: 1px solid grey;
+  border-right: none;
+  color: black;
+  text-transform: uppercase;
+  padding: 0 20px;
+  font-size: 12px;
+  line-height: 25px;
+  position: relative;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.searchTerm:focus{
+  color: black;
+  text-transform: uppercase;
+  padding: 0 20px;
+  font-size: 12px;
+  line-height: 25px;
+  position: relative;
+}
+
+.searchButton {
+  width: 40px;
+  height: 30px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  border-right: 1px solid grey;
+  background: white;
+  text-align: center;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 40%;
+  position: absolute;
+  top: 3%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+}
+.fa{
+  color :black;
+}
 .main {
   max-width: 1200px;
   margin: auto;

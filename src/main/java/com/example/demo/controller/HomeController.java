@@ -9,8 +9,6 @@ public class HomeController {
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("home");
-		mv.addObject("login","LogIn");
-		mv.addObject("signup", "Sign Up");
 		return mv;
 	}
 }
