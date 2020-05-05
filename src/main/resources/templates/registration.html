@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="logo"><a class = "logo" href = "home">SpringIO<a></a></div>
-<h2>Sign in/up Form</h2>
+<h2>Sign up/in Form</h2>
 	<th:block th:if="${#session != null && #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}">
 	<div th:if= "${#request.getParameter('error') == 'true'}"
 	style="color: red; margin: 10px 0px;">
@@ -18,25 +18,7 @@
 	</th:block>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		 <form th:object="${userForm}" enctype="multipart/form-data" method="POST" th:action="@{/registration}">
-			<h1>Create Account</h1>
-				<span class="error-message" th:utext="${errorMessage}" style="color: red; margin: 10px 0px;"></span>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>or use your email for registration</span>
-			<input type="text" placeholder="First Name" th:field="*{firstName}" />
-			<input type="text" placeholder="Last Name" th:field="*{lastName}" />
-			<input type="email" placeholder="Email" th:field="*{email}" />
-			<input type="password" placeholder="Password" th:field="*{password}" />
-			<button>Sign Up</button>
-		</form>
-	</div>
-	<div class="form-container sign-in-container">
-	
-		 <form th:object="${userForm}" enctype="multipart/form-data" method="POST" th:action="@{/securityCheck}">
+	<form th:object="${userForm}" enctype="multipart/form-data" method="POST" th:action="@{/securityCheck}">
 
 			<h1>Sign in</h1>
 			<div class="social-container">
@@ -50,20 +32,36 @@
 			<a href="#">Forgot your password?</a>
 			<button>Sign In</button>
 		</form>
-		<span class="error-message" th:utext="${error}"></span>
-		
+		<span class="error-message" th:utext="${error}"></span>		
+	</div>
+	<div class="form-container sign-in-container">
+		 <form th:object="${userForm}" enctype="multipart/form-data" method="POST" th:action="@{/registration}">
+			<h1>Create Account</h1>
+			<span class="error-message" th:utext="${errorMessage}" style="color: red; margin: 10px 0px;"></span>
+			<div class="social-container">
+				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your email for registration</span>
+			<input type="text" placeholder="First Name" th:field="*{firstName}" />
+			<input type="text" placeholder="Last Name" th:field="*{lastName}" />
+			<input type="email" placeholder="Email" th:field="*{email}" />
+			<input type="password" placeholder="Password" th:field="*{password}" />
+			<button>Sign Up</button>
+		</form>
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
-			<div class="overlay-panel overlay-left">
+			<div class="overlay-panel overlay-right">
 				<h1>Welcome To SpringIO</h1>
 				<p>Already have an account ? let's shop !</p>
-				<button class="ghost" id="signIn">Sign In</button>
+				<button class="ghost" id="signUp">Sign In</button>
 			</div>
-			<div class="overlay-panel overlay-right">
+			<div class="overlay-panel overlay-left">
 				<h1>Hello, Friend!</h1>
 				<p>Enter the following details and start shopping with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
+				<button class="ghost" id="signIn">Sign Up</button>
 			</div>
 		</div>
 	</div>

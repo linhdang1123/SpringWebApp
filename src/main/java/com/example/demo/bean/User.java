@@ -1,18 +1,19 @@
 package com.example.demo.bean;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
- 
- 
-    /**
+public class User  implements Serializable {
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5867078771628737366L;
@@ -22,7 +23,6 @@ public class User implements Serializable {
     @Id
     @Column(name = "email", length = 20, nullable = false)
     private String email;
- 
     @Column(name = "Encryted_Password", length = 128, nullable = false)
     private String encrytedPassword;
  
@@ -36,6 +36,10 @@ public class User implements Serializable {
     public String getEncrytedPassword() {
         return encrytedPassword;
     }
+	public String getLocalPart(String email) {
+		int index = email.indexOf("@");
+		return index < 0 ? email : email.substring(0, email.indexOf("@"));
+	}
  
     public void setEncrytedPassword(String encrytedPassword) {
         this.encrytedPassword = encrytedPassword;

@@ -13,11 +13,14 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.bean.User;
 import com.example.demo.dao.UserDAO;
+import com.example.demo.form.UserForm;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
 	@Autowired
 	UserDAO userDAO;
-
+	public void save(UserForm userForm) {
+		userDAO.save(userForm);
+	}
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userDAO.findUser(username);
@@ -35,9 +38,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		boolean accountNonExpired = true;
 		boolean credentialsNonExpired = true;
 		boolean accountNonLocked = true;
-		
-		UserDetails userDetails =(UserDetails)  new org.springframework.security.core.userdetails.User(user.getEmail(),user.getEncrytedPassword(),enabled,accountNonExpired,credentialsNonExpired,accountNonLocked,grantList);
-		
+		UserDetails userDetails =(UserDetails)  new UserDetailsImpl(user.getEmail(),user.getEncrytedPassword(),enabled,accountNonExpired,credentialsNonExpired,accountNonLocked,grantList);
 		return userDetails;
 	}
 	

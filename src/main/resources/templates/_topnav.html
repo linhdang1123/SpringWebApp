@@ -3,14 +3,14 @@
    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
 	<ul class="menu-toparea">
 	    <th:block sec:authorize="isAuthenticated()">
-	    <li><a th:href="@{/accountInfo}" th:utext="${#request.userPrincipal.name}"> Hello</a></li>
+	    <li><a th:href="@{/accountInfo}" th:utext="${#request.userPrincipal.principal.name}"> Hello</a></li>
 	    <li><a th:href="@{/logout}">Log Out</a></li>
 	    </th:block>
 		<th:block sec:authorize="!isAuthenticated()">
 		<li><a th:href="@{/login}">Login</a></li>
 		</th:block>
 		<th:block sec:authorize="!isAuthenticated()">
-		<li><a th:href="@{/login}">Sign up</a></li>
+		<li><a th:href="@{/registration}">Sign up</a></li>
 		</th:block>
 		<li><a href="#contact">Contact</a></li>
 		<li><a href="#start selling">Start Selling</a></li>

@@ -8,12 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.demo.form.UserForm;
+
 @Controller
 @Transactional
 public class LoginController {
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String login(Model model) {
-
+		UserForm form = new UserForm();
+		model.addAttribute("userForm", form);
 		return "login";
 	}
 
