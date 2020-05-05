@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Account Info</title>
+<link rel="stylesheet" type="text/css" th:href="@{/nav.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/homestyle.css}" />
+<style>
+
+
+.main {
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: helvetica;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 30vw;
+  min-height: 60vmin;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 50%;
+}
+
+@media screen and (max-width: 414px) {
+  .card {
+    width: 80vw;
+  }
+}
+
+.card__object {
+  height: 15vmin;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.card__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  padding: 5px;
+  transform: translateY(calc(15vmin - 40px));
+}
+
+.card__avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.card__body {
+  min-height: 28vmin;
+  padding: 50px 20px 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 0 0 8px 8px;
+}
+
+.card__body h3,
+.card__body h4 {
+  box-sizing: border-box;
+  line-height: 1.6;
+  font-weight: bold;
+}
+
+.card__body h4 {
+  opacity: 0.4;
+}
+
+.card__body p {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+img {
+  max-width: 100%;
+}
+
+
+
+
+@keyframes swing {
+  0% {
+    transform: rotate(4deg);
+  }
+
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0.98);
+    //transform: rotatex(-15deg);
+  }
+
+  100% {
+    transform: scale(1.02);
+    //transform: rotatex(15deg);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  4%,
+  8%,
+  12%,
+  20%,
+  30%,
+  40%,
+  50%,
+  100% {
+    filter: saturate(0);
+  }
+
+  2%,
+  6%,
+  10% {
+    filter: saturate(1.4);
+  }
+
+  25%,
+  35%,
+  45% {
+    filter: saturate(1.6);
+  }
+
+  80% {
+    filter: saturate(3);
+  }
+}
+
+@keyframes flicker-light {
+  0%,
+  4%,
+  8%,
+  12%,
+  20%,
+  30%,
+  40%,
+  50%,
+  100% {
+    filter: saturate(0);
+    opacity: 0.5;
+  }
+
+  2%,
+  6%,
+  10% {
+    filter: saturate(1.4);
+    opacity: 0.6;
+  }
+
+  25%,
+  35%,
+  45% {
+    filter: saturate(1.6);
+    opacity: 0.6;
+  }
+
+  80% {
+    filter: saturate(3);
+    opacity: 0.7;
+  }
+}
+
+:root {
+  --color: grey;
+  --primary-color: #ffffff; 
+  --body-bg-color: #f1f1f1;
+  --card-box-shadow-color: #405070; 
+  --btn-bg-color: #28c3f5;
+  --paragraph-color: black; 
+  --title-color: #101c34;
+  --avatar-bg-color: #fff;
+  --light: #fff;
+  --saturation: 0;
+  --invert: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: "dark";
+  }
+
+  :root:not([data-user-color-scheme]) {
+    --color: #fff;
+    --primary-color: #1a1515; /* 主色 */
+    --body-bg-color: #1a1818; /* body背景颜色 */
+    --card-box-shadow-color: #6a716e; /* card盒子阴影颜色 */
+    --btn-bg-color: #ff5722; /* button背景颜色 */
+    --paragraph-color: #c7c1c1; /* 段落文本颜色 */
+    --card-object-bg-color: #282035; /* card顶部背景颜色 */
+    --title-color: #ffffff; /* 标题2文本颜色 */
+    --avatar-bg-color: grey;
+    --saturation: 1;
+    --invert: 0.8;
+  }
+}
+
+[data-user-color-scheme="dark"] {
+  --color: #fff;
+  --primary-color: #1a1515; /* 主色 */
+  --body-bg-color: #1a1818; /* body背景颜色 */
+  --card-box-shadow-color: #6a716e; /* card盒子阴影颜色 */
+  --btn-bg-color: #ff5722; /* button背景颜色 */
+  --paragraph-color: #c7c1c1; /* 段落文本颜色 */
+  --card-object-bg-color: #282035; /* card顶部背景颜色 */
+  --title-color: #ffffff; /* 标题2文本颜色 */
+  --avatar-bg-color: #673ab7;
+  --saturation: 1;
+  --highlight: #00fdcf;
+  --invert: 0.8;
+}
+
+
+
+.card {
+  background: var(--primary-color);
+  box-shadow: 0px 1px 10px 1px var(--card-box-shadow-color);
+}
+
+.card__object {
+  background-color: var(--card-object-bg-color);
+}
+
+.card__avatar {
+  background-color: var(--avatar-bg-color);
+}
+
+.card__body h4 {
+  color: var(--title-color);
+}
+
+.card__body p {
+  color: var(--paragraph-color);
+}
+
+.card__body .btn {
+  background: var(--btn-bg-color);
+  color: var(--primary-color);
+}
+
+.card__body .btn:hover {
+  color: var(--btn-bg-color);
+}
+
+</style>
+</head>
+<body>
+  <th:block th:include="/_topnav"></th:block>
+  <th:block th:include="/_nav"></th:block>
+<div class = "main">  
+<div class="card">
+    <div class="card__object">
+      
+    </div>
+
+    <div class="card__body">
+     <h1>Account Info</h1>
+     <br>
+    <table>
+      <tr><td><h3>User Name : </h3></td><td><h3 th:utext="${#request.userPrincipal.name}"></h3></td></tr>
+      <tr><td><h4>Role : </h4></td><td><h4 th:each="auth : ${userDetails.authorities}" th:utext="${auth.authority}"></h4></td></tr>
+      </table>
+    </div>
+  </div>
+
+ </div>
+
+
+</body>
+</html>

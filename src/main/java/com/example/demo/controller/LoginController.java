@@ -1,38 +1,32 @@
 package com.example.demo.controller;
 
-import java.util.Random;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.example.demo.bean.User;
-import com.example.demo.dao.UserRepo;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@Transactional
 public class LoginController {
-	@Autowired
-	UserRepo repo;
-	
-	@RequestMapping("/SignIn")
-	public ModelAndView signIn(@RequestParam String email, @RequestParam String passWord ) {
-		ModelAndView mv = new ModelAndView();
-		User user = repo.findByEmail(email);
-		if(user == null || !user.getPassWord().equals(passWord)) {
-			mv.setViewName("login");
-			mv.addObject("message", "Invalid email/Password !");
-		}else{
-			mv.setViewName("home");
-			mv.addObject("user", user.getFirstName());
-			mv.addObject("login", "Hi " + user.getFirstName());
-			mv.addObject("signup", "");
-			//mv.addObject("message", "hi" + user.getfirstname());
-			
-		}
-		
-		return mv;
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	public String login(Model model) {
+
+		return "login";
 	}
-	
+
+	@RequestMapping(value = { "/accountInfo" }, method = RequestMethod.GET)
+	public String accountInfo(Model model) {
+
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(userDetails.getPassword());
+		System.out.println(userDetails.getUsername());
+		System.out.println(userDetails.isEnabled());
+
+		model.addAttribute("userDetails", userDetails);
+		return "accountInfo";
+	}
+
 }
