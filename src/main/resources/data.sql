@@ -1,1 +1,0 @@
-insert into User values (100,'linhdang@yahoo.com','linh','dang','1234','123456789','linhdang1123');
