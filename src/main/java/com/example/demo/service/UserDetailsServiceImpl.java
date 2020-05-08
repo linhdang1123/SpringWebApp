@@ -40,7 +40,6 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		boolean accountNonLocked = true;
 		UserDetails userDetails =(UserDetails)  new UserDetailsImpl(user.getEmail(),user.getEncrytedPassword(),enabled,accountNonExpired,credentialsNonExpired,accountNonLocked,grantList);
 		return userDetails;
-	}
-	
+	}	
 
 }

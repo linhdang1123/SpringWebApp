@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/homebody.css}" />
+<title>Insert title here</title>
+
+</head>
+<body>
+<div class="container">
+	<header>
+		<div class="logo">
+			<h1>
+				Crianbluff
+			</h1>
+			
+			<p>
+				Desarrollador Web
+			</p>
+		</div>
+		
+		<form action="javascriipt:void(0);">
+			<input type="text" id="bar-search" class="bar-search" placeholder="Buscar">
+		</form>
+		
+		<div id="categories" class="categories">
+			<a href="javascript:void(0);" class="active">
+			 Todos
+			</a>
+			
+			<a href="javascript:void(0);">
+			 Naturaleza
+			</a>
+			
+			<a href="javascript:void(0);">
+			 Ciudades
+			</a>
+			
+			<a href="javascript:void(0);">
+			 Personas
+			</a>
+			
+			<a href="javascript:void(0);">
+			 Animales
+			</a>
+		</div>
+	</header>
+	
+	<section id="grid" class="grid">
+		<div class="item"
+				 data-categorie="ciudades"
+				 data-etiquetas="ciudades autos carros calles"
+				 data-description="1- Lorem ipsum dolor sit, amet consectetur adipisicing.">
+			<div class="item-content">
+				<img src="https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fciduad.png?alt=media&token=a09f1bd9-2fa0-4865-9c54-46969c2d3b9a" alt="Ciudades" title="Ciudades">
+			</div>
+		</div>
+		
+		<div class="item"
+				 data-categorie="personas"
+				 data-etiquetas="personas mujeres"
+				 data-description="2- Lorem ipsum dolor sit, amet consectetur adipisicing.">
+			<div class="item-content">
+				<img src="https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fpersona.png?alt=media&token=246eefba-71b9-4d3f-9006-762e07fb952f" alt="Personas" title="Personas">
+			</div>
+		</div>
+		
+		<div class="item"
+				 data-categorie="paisajes"
+				 data-etiquetas="paisajes montañas mar playas"
+				 data-description="3- Lorem ipsum dolor sit, amet consectetur adipisicing.">
+			<div class="item-content">
+				<img src="https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fpaisaje.png?alt=media&token=405e2715-e8f7-417f-a3a5-02ab5a31a545" alt="Paisajes" title="Paisajes">
+			</div>
+		</div>
+		
+		<div class="item"
+				 data-categorie="animales"
+				 data-etiquetas="animales leones"
+				 data-description="4- Lorem ipsum dolor sit, amet consectetur adipisicing.">
+			<div class="item-content">
+				<img src="https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fleon.png?alt=media&token=499a1056-07de-45a4-bc94-2d30be976e37" alt="Animales" title="Animales">
+			</div>
+		</div>
+		
+		<div class="item"
+				 data-categorie="animales"
+				 data-etiquetas="animales pandas"
+				 data-description="5- Lorem ipsum dolor sit, amet consectetur adipisicing.">
+			<div class="item-content">
+				<img src="https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fpanda.png?alt=media&token=7699dcf0-3f9f-4ec3-a362-1838fb13c4c4" alt="Animales" title="Animales">
+			</div>
+		</div>
+		
+		<div class="item"
+				 data-categorie="personas"
+				 data-etiquetas="personas mujeres"
+				 data-description="6- Lorem ipsum dolor sit, amet consectetur adipisicing.">
+			<div class="item-content">
+				<img src="https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fpersona-2.png?alt=media&token=967f9ec9-ca98-444d-b264-14e126aee69e" alt="Personas" title="Personas">
+			</div>
+		</div>
+		
+		<div class="item"
+				 data-categorie="paisajes"
+				 data-etiquetas="paisajes montañas niebla"
+				 data-description="7- Lorem ipsum dolor sit, amet consectetur adipisicing.">
+			<div class="item-content">
+				<img src="https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fpaisaje-2.png?alt=media&token=ab3b0885-d357-4a45-9a92-a02c4ff687c3" alt="Paisajes" title="Paisajes">
+			</div>
+		</div>
+		
+		<div class="item"
+				 data-categorie="ciudades"
+				 data-etiquetas="ciudades paisajes carreteras"
+				 data-description="8- Lorem ipsum dolor sit, amet consectetur adipisicing.">
+			<div class="item-content">
+				<img src="https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fciudad-2.png?alt=media&token=8946ee23-10d8-4b50-a217-f68076b234e5" alt="Ciudades" title="Ciudades">
+			</div>
+		</div>
+		
+		<div class="item"
+				 data-categorie="naturaleza"
+				 data-etiquetas="naturaleza hojas plantas"
+				 data-description="9- Lorem ipsum dolor sit, amet consectetur adipisicing.">
+			<div class="item-content">
+				<img src="https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fnaturaleza.png?alt=media&token=d274d72a-735a-4be5-a94f-a304e42a49b2" alt="Naturaleza" title="Naturaleza">
+			</div>
+		</div>
+	</section>
+	
+	<section id="overlay" class="overlay">
+		<div class="container-popup">
+			<button type="button" id="close-popup">
+				<i class="fa fa-times"></i>
+			</button>
+			
+			<img src="" alt="" title="">
+		</div>
+		
+		<p class="description"></p>
+	</section>
+	
+	<footer class="container">
+		<div class="social-media">
+			<div class="ctn-icon">
+				<a href="javascript:void(0);" class="twitter" target="_blank">
+					<i class="fa fa-twitter"></i>	
+				</a>
+			</div>
+			
+			<div class="ctn-icon">
+				<a href="javascript:void(0);" class="facebook" target="_blank">
+					<i class="fa fa-facebook"></i>	
+				</a>
+			</div>
+				
+			<div class="ctn-icon">
+				<a href="javascript:void(0);" class="instagram" target="_blank">
+					<i class="fa fa-instagram"></i>	
+				</a>
+			</div>
+		</div>
+		
+		<div class="copyright">
+			<p>
+				© Sitio web creado por
+				<a href="http://crianbluff.com" target="_blank">
+					Crianbluff
+				</a>
+				Cristian Castillo 2019
+			</p>
+		</div>
+	</footer>
+</div>
+<script>
+const grid = new Muuri('.grid', {
+	layout: {
+		rounding: false
+  }
+});
+
+window.addEventListener('load', () => {
+	grid.refreshItems().layout();
+	document.getElementById('grid').classList.add('images-loaded');
+	
+	// Agregamos listener de los enlaces para filtrar por categoria.
+	const links = document.querySelectorAll('#categories a');
+	
+	links.forEach( el => {
+		el.addEventListener('click', e => {
+			e.preventDefault();
+			e.target.parentElement.querySelector('#categories a.active').classList.remove('active');
+			e.target.classList.add('active');
+			
+			const categorie = e.target.innerHTML.toLowerCase().trim();
+			categorie === 'todos' ? grid.filter('[data-categorie]') : grid.filter(`[data-categorie="${categorie}"]`);
+		});
+	});
+	
+	// Agregamos listener de los enlaces en la barrada de busqueda para filtrar por etiqueta.
+	document.querySelector('#bar-search').addEventListener('input', (event) => {
+		const search = event.target.value;
+		grid.filter( (item) => item.getElement().dataset.etiquetas.includes(search) );
+	});
+	
+	// Agregamos listener para el popup de las imágenes
+	const overlay = document.getElementById('overlay');
+	document.querySelectorAll('.grid .item img').forEach( el => {
+		el.addEventListener('click', () => {
+			const path = el.getAttribute('src');
+			const alternativeTitle = el.getAttribute('alt');
+			const description = el.parentNode.parentNode.dataset.description;
+			overlay.classList.add('active');
+			document.querySelector('#overlay img').src = path;
+			document.querySelector('#overlay img').alt = alternativeTitle;
+			document.querySelector('#overlay img').title = alternativeTitle;
+			document.querySelector('#overlay .description').innerHTML = description;
+		});
+	});
+	
+	// Agregamos listener para cerrar el popup de las imágenes
+	document.getElementById('close-popup').addEventListener('click', () => {
+		overlay.classList.remove('active');
+	});
+	
+	// Agregamos listener para cerrar el popup de las imágenes dando click en el overlay
+	overlay.addEventListener('click', (e) => {
+		e.target.classList.remove('active');
+	});
+	
+	
+});
+</script>
+</body>
+</html>

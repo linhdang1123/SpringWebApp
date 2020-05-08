@@ -6,17 +6,27 @@
 <link rel="stylesheet" type="text/css" th:href="@{/homestyle.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/nav.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
+<style>
+.mySlides {display:none;}
+</style>
 </head>
 <body>
   <th:block th:include="/_topnav"></th:block>
   <th:block th:include="/_nav"></th:block>
 	<div class="main">
 
-		<div class="grid" style="max-width: 1200px; margin-top: 100px">
+		<div class="grid" style="max-width: 1200px; margin-top: 45px">
 			<div class="row">
-				<img
+					<img class = "mySlides"
 					src="https://cdn.pixabay.com/photo/2018/04/18/06/14/tram-3329586_960_720.jpg"
-					alt="" style="width: 70%; height: 350px; margin-left : auto; margin-right:auto; display :block; " />
+					alt="" style="width: 70%; height: 450px; margin-left : auto; margin-right:auto;" />
+					<img class = "mySlides"
+					src="https://images.pexels.com/photos/212236/pexels-photo-212236.jpeg"
+					alt="" style="width: 70%; height: 450px; margin-left : auto; margin-right:auto; " />
+					<img class = "mySlides"
+					src="https://images.pexels.com/photos/313707/pexels-photo-313707.jpeg"
+					alt="" style="width: 70%; height: 450px; margin-left : auto; margin-right:auto; " />
+				
 			</div>
 				<div class="row">
 					<div class="column">
@@ -24,6 +34,10 @@
 							<img
 								src="https://cdn.pixabay.com/photo/2016/07/25/13/52/woman-1540543_960_720.jpg"
 								alt="Mountains" style="width: 100%">
+							<div id="myModal">
+								  <img class="myModal_content">
+								  <span class="close">&times;</span>
+								</div>	
 							<div class="card-block">
 								<h4 class="card-title">Shoes</h4>
 								<p class="card-text">Price: $5</p>
@@ -120,7 +134,7 @@
 		</div>
 
 
-
+<script type="text/javascript" th:src="@{/myslides.js}"></script>
 
 
 </body>

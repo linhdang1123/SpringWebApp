@@ -23,6 +23,10 @@ public class HomeController {
 
 		return new ModelAndView("index");
 	}
+	@RequestMapping("/body")
+	public ModelAndView body(ModelMap model) {
+		return new ModelAndView("body");
+	}
 
 
 
