@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+<h1>Hello</h1>
+
+<h1>We have received your <span th:utext=${item.name}></span>, belonging to the <span th:utext=${item.category}></span> category and <span th:utext=${item.subcategory}></span> subcategory.
+It costs <span th:utext=${item.price}></span> dollars. Its description is <span th:utext=${item.description}></span>. It looks like 
+
+</h1>
+<img th:src="*{'data:image/jpg;base64,'+ image}" alt="#" />
+</body>
+</html>
