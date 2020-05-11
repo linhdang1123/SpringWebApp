@@ -26,7 +26,6 @@ import com.example.demo.bean.Item;
 import com.example.demo.dao.ItemDAO;
 import com.example.demo.form.ItemForm;
 import com.example.demo.form.UserForm;
-import com.example.demo.service.FileUploadDAO;
 
 @Controller
 @Transactional
