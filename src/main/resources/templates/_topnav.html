@@ -13,8 +13,10 @@
 		<li><a th:href="@{/registration}">Sign up</a></li>
 		</th:block>
 		<li><a href="#contact">Contact</a></li>
-		<li><a href="@{/login}">Start Selling</a></li>
-		<div class="wrap">
+		<li><a href="#contact"></a></li>
+		<li><a href="#contact"></a></li>
+		<li><a href="#contact"></a></li>
+		<li style = "width : 600px; text-align : center;">
 			<div class="search">
 				<input type="text" class="searchTerm"
 					placeholder="What are you looking for?">
@@ -22,6 +24,8 @@
 					<i class="fa fa-search"></i>
 				</button>
 			</div>
-		</div>
+		</li>
+		<li style = " float: right;"><a th:href="@{/cart}"><i class="fa fa-shopping-cart fa-2x"><b style = "font-size : 15px;">4</b></i></a></li>
+		<li style = "float : right;"><a href="@{/login}">Start Selling</a></li>
 	</ul>
 </div>

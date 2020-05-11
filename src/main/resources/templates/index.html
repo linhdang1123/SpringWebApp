@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
-<link rel="stylesheet" type="text/css" th:href="@{/homestyle.css}" />
-<link rel="stylesheet" type="text/css" th:href="@{/nav.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/homestyle.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/nav.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
 <style>
 .mySlides {display:none;}
@@ -14,8 +14,7 @@
   <th:block th:include="/_topnav"></th:block>
   <th:block th:include="/_nav"></th:block>
 	<div class="main">
-
-		<div class="grid" style="max-width: 1200px; margin-top: 45px">
+		<div class="grid" style="max-width: 1200px; margin-top: 35px">
 			<div class="row">
 					<img class = "mySlides"
 					src="https://cdn.pixabay.com/photo/2018/04/18/06/14/tram-3329586_960_720.jpg"
@@ -130,7 +129,7 @@
 		</div>
 
 
-<script type="text/javascript" th:src="@{/myslides.js}"></script>
+<script type="text/javascript" th:src="@{/js/myslides.js}"></script>
 
 
 </body>
