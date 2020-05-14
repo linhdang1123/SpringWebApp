@@ -10,8 +10,5 @@ public class CartController {
 	public String showCart(Model model) {
 		return "cart";
 	}
-	@RequestMapping("/productlist")
-	public String addToCart(Model model) {
-		return "productlist";
-	}
+
 }

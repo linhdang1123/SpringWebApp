@@ -1,31 +1,25 @@
 package com.example.demo.controller;
-
-import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.apache.commons.io.IOUtils;
+import com.example.demo.Model.ItemDetails;
 import com.example.demo.bean.Item;
 import com.example.demo.dao.ItemDAO;
 import com.example.demo.form.ItemForm;
-import com.example.demo.form.UserForm;
+import com.example.demo.pagination.PaginationResult;
 
 @Controller
 @Transactional
@@ -50,7 +44,7 @@ public class UploadItemController {
 	         String message = rootCause.getMessage();
 	         model.addAttribute("errorMessage", message);
 	         System.out.println("error");
-	         return "uploadItem";
+	         return "uploadItem"; 
 	   }
 	    int code=itemForm.getCode();
 	    Item item=itemDAO.findItem(code);
@@ -59,6 +53,29 @@ public class UploadItemController {
 	    model.addAttribute("item",item);
 	    return "item_success";
 	   }
+	@RequestMapping({ "/productlist" })
+	public String displayItem(Model model, //
+	         @RequestParam(value = "name", defaultValue = "") String likeName,
+	         @RequestParam(value = "page", defaultValue = "1") int page) {
+		System.out.println("likeName : " +likeName + ", page :" + page);
+	    final int maxResult = 8;
+	    final int maxNavigationPage = 100;
+	    System.out.println("uploadItem Controller");
+	    PaginationResult<ItemDetails> result = itemDAO.queryProducts(page, //
+	    maxResult, maxNavigationPage);
+	    model.addAttribute("paginationItems", result);
+	    return "productlist";
+	}
+	@RequestMapping(value = {"/itemImage"}, method = RequestMethod.GET)
+	public void itemImage(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam("code") int code) throws IOException {
+		Item item = null;
+		if(code !=  0) item = this.itemDAO.findItem(code);
+		if(item != null && item.getImage() != null) {
+			response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+			response.getOutputStream().write(item.getImage());
+		}
+		response.getOutputStream().close();	
+	}
 	
 /*	@RequestMapping(value = {"/item_success"})
 	public String itemSuccess(Model model) {

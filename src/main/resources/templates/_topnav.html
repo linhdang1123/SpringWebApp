@@ -16,7 +16,7 @@
 		<li><a href="#contact"></a></li>
 		<li><a href="#contact"></a></li>
 		<li><a href="#contact"></a></li>
-		<li style = "width : 600px; text-align : center;">
+		<li style = "width : 400px; text-align : center;">
 			<div class="search">
 				<input type="text" class="searchTerm"
 					placeholder="What are you looking for?">
@@ -28,7 +28,10 @@
 		<li style = " float: right;"><a th:href="@{/cart}"><i class="fa fa-shopping-cart fa-2x"><b style = "font-size : 15px;">4</b></i></a></li>
 		<li style = "float : right;"><a th:href="@{/login}">Start Selling</a></li>
 		<th:block sec:authorize="isAuthenticated()">
+		<th:block sec:authorize="hasRole('ROLE_SELLER')">
 		<li style = "float : right;"><a th:href="@{/uploadItem}">My Products</a></li>
+		<li style = "float : right;"><a th:href="@{/uploadItem}">Upload Item</a></li>
+		</th:block>
 		</th:block>
 	</ul>
 </div>

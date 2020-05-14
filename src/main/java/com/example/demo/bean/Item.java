@@ -43,7 +43,7 @@ public class Item  implements Serializable {
     private String subcategory;
     @Column(name = "subsubcategory", length = 45, nullable = true)
     private String subsubcategory;
-    @Column(name = "image", length = 1000, nullable=false)
+    @Column(name = "image", nullable=false)
 	private byte[] image;
 	public int getCode() {
 		return code;
