@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>product info</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/homestyle.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/nav.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/item.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
+<style>
+.panel{
+ padding: 20px;
+ border-radius : 0 ;
+ border: 1px solid black;
+ max-width: 1000px; 
+ height :8px;
+ display: block; 
+ text-decoration: none;
+
+}
+.panel:hover{
+	background-color: #FFF0E8;
+}
+.shopbutton{
+	position : relative;
+	bottom: 8px;
+	font-weight: bold;
+	color : black;
+}
+
+</style>
+</head>
+<body>
+	<th:block th:include="/_topnav"></th:block>
+	<th:block th:include="/_nav"></th:block>
+	<div class="main" style = "padding-top : 15px;">
+		<div>
+		<a class = "panel" th:href = "@{/productlist}">
+				<span class="shopbutton">Continue Shopping</span>
+
+		</a>
+		</div>
+		<main class="container">
+			<!-- Left Column / Headphones Image -->
+			<div class="left-column">
+				<img data-image="black"
+					style="width: 600px; height : 600px; position: absolute; left: 0; top: 0;"
+					th:src="@{|/itemImage?code=${itemDetails.code}|}" 
+					alt="">
+			</div>
+
+
+			<!-- Right Column -->
+			<div class="right-column">
+
+				<!-- Product Description -->
+				<div class="product-description">
+					<span>category</span>
+					<h1 th:utext="${itemDetails.name}">Item's name</h1>
+					<p th:utext="${itemDetails.description}">This is a description of this item</p>
+				</div>
+
+				<!-- Product Pricing -->
+				<div class="product-price">
+					<span th:utext="${'$' + itemDetails.price}"></span> <a th:href="@{|/saveToCart?code=${itemDetails.code}|}"class="cart-btn">Add to cart</a>
+				</div>
+			</div>
+		</main>
+	</div>
+</body>
+</html>

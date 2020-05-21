@@ -53,7 +53,7 @@ public class UploadItemController {
 	    model.addAttribute("item",item);
 	    return "item_success";
 	   }
-	@RequestMapping({ "/productlist" })
+	@RequestMapping(value ={ "/productlist" })
 	public String displayItem(Model model, //
 	         @RequestParam(value = "name", defaultValue = "") String likeName,
 	         @RequestParam(value = "page", defaultValue = "1") int page) {
@@ -75,6 +75,13 @@ public class UploadItemController {
 			response.getOutputStream().write(item.getImage());
 		}
 		response.getOutputStream().close();	
+	}
+	@RequestMapping(value = {"/item"}, method = RequestMethod.GET)
+	public String showItem(Model model, @RequestParam("itemcode") int code) {
+		ItemDetails itemDetails = this.itemDAO.getItemDetails(code);
+		if(itemDetails == null) itemDetails = new ItemDetails();
+		model.addAttribute("itemDetails",itemDetails);
+		return "item";
 	}
 	
 /*	@RequestMapping(value = {"/item_success"})

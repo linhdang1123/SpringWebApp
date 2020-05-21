@@ -9,8 +9,9 @@
 		<th:block sec:authorize="!isAuthenticated()">
 		<li><a th:href="@{/login}">Login</a></li>
 		</th:block>
+			<li style = " float: right;"><a th:href="@{/cart}"><i class="fa fa-shopping-cart fa-2x"><b style = "font-size : 15px;"></b></i></a></li>
 		<th:block sec:authorize="!isAuthenticated()">
-		<li><a th:href="@{/registration}">Sign up</a></li>
+		<li><a th:href="@{/login}">Sign up</a></li>
 		</th:block>
 		<li><a href="#contact">Contact</a></li>
 		<li><a href="#contact"></a></li>
@@ -25,13 +26,8 @@
 				</button>
 			</div>
 		</li>
-		<li style = " float: right;"><a th:href="@{/cart}"><i class="fa fa-shopping-cart fa-2x"><b style = "font-size : 15px;">4</b></i></a></li>
-		<li style = "float : right;"><a th:href="@{/login}">Start Selling</a></li>
-		<th:block sec:authorize="isAuthenticated()">
-		<th:block sec:authorize="hasRole('ROLE_SELLER')">
 		<li style = "float : right;"><a th:href="@{/uploadItem}">My Products</a></li>
-		<li style = "float : right;"><a th:href="@{/uploadItem}">Upload Item</a></li>
-		</th:block>
-		</th:block>
+		<li style = "float : right;"><a th:href="@{/uploadItem}">Start Selling</a></li>
+
 	</ul>
 </div>

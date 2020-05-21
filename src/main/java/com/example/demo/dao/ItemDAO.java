@@ -72,5 +72,4 @@ public class ItemDAO {
 	public PaginationResult<ItemDetails> queryProducts(int page, int maxResult, int maxNavigationPage){
 		return queryProducts(page, maxResult, maxNavigationPage, null);
 	}
-
 }

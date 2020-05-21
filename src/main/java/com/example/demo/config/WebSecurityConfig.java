@@ -38,6 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	      http.authorizeRequests().antMatchers("/index")//
           .access("hasAnyRole('ROLE_SELLER', 'ROLE_ADMIN','ROLE_CUSTOMER')");
 	      http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+	      http.authorizeRequests().antMatchers("/uploadItem")//
+          .access("hasAnyRole('ROLE_SELLER', 'ROLE_ADMIN')");
+	      http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 	 
 	      // Configuration for Login Form.
 	      http.authorizeRequests().and().formLogin()//

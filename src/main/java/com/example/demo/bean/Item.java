@@ -23,7 +23,7 @@ public class Item  implements Serializable {
 //	private static final long serialVersionUID = -5867078771628737366L;
 //	public static final String ROLE_SELLER = "SELLER";
 //    public static final String ROLE_ADMIN = "ADMIN";
- 
+
     @Id
     @Column(name = "code", length = 20, nullable = false)
     private int code;

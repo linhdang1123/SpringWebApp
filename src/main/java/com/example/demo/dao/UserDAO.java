@@ -40,7 +40,7 @@ public class UserDAO {
 		  user.setEmail(userForm.getEmail());
 		  user.setEncrytedPassword(passwordEncoder.encode(userForm.getPassword()));
 		  user.setActive(true);
-		  user.setUserRole("ROLE_CUSTOMER");
+		  user.setUserRole("ROLE_SELLER");
 		  System.out.println("in dao");
 		  session.save(user);
 		
