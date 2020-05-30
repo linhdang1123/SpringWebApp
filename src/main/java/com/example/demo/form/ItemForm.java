@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.util.Calendar;
@@ -14,7 +15,7 @@ import java.io.FileNotFoundException;
 public class ItemForm {
 
 	private int code;
-	private CommonsMultipartFile image;
+	private MultipartFile image;
 	private String category;
 	private String subcategory;
 	private String subsubcategory;
@@ -36,10 +37,10 @@ public class ItemForm {
 	public void setCode(int code) {
 		this.code = code;
 	}
-	public CommonsMultipartFile getImage( ) {
+	public MultipartFile getImage( ) {
 		return image;
 	}
-	public void setImage(CommonsMultipartFile image) {
+	public void setImage(MultipartFile image) {
 		this.image=image;
 	}
 	public String getCategory() {

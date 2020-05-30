@@ -36,6 +36,7 @@ function getSubcategory() {
 			clothesCheckbox.classList.remove('hide');
 		    bagsCheckbox.classList.add('hide'); 
 		    accessoriesCheckbox.classList.add('hide'); 
+		    shoesCheckbox.classList.add('hide');
 		    topsCheckbox.classList.add('hide');
 		    bottomsCheckbox.classList.add('hide'); 
 		    sweatersCheckbox.classList.add('hide'); 
@@ -46,6 +47,7 @@ function getSubcategory() {
 			clothesCheckbox.classList.add('hide');
 		    bagsCheckbox.classList.remove('hide'); 
 		    accessoriesCheckbox.classList.add('hide');
+		    shoesCheckbox.classList.add('hide');
 		    topsCheckbox.classList.add('hide');
 		    bottomsCheckbox.classList.add('hide'); 
 		    sweatersCheckbox.classList.add('hide'); 
@@ -55,7 +57,19 @@ function getSubcategory() {
 		if (mycategory=="Accessories") {
 			clothesCheckbox.classList.add('hide');
 		    bagsCheckbox.classList.add('hide'); 
-		    accessoriesCheckbox.classList.remove('hide'); 
+		    accessoriesCheckbox.classList.remove('hide');
+		    shoesCheckbox.classList.add('hide');
+		    topsCheckbox.classList.add('hide');
+		    bottomsCheckbox.classList.add('hide'); 
+		    sweatersCheckbox.classList.add('hide'); 
+		    jacketsCheckbox.classList.add('hide'); 
+		    dressesCheckbox.classList.add('hide'); 
+		}
+		if (mycategory=="Shoes") {
+			clothesCheckbox.classList.add('hide');
+		    bagsCheckbox.classList.add('hide'); 
+		    accessoriesCheckbox.classList.add('hide'); 
+		    shoesCheckbox.classList.remove('hide');
 		    topsCheckbox.classList.add('hide');
 		    bottomsCheckbox.classList.add('hide'); 
 		    sweatersCheckbox.classList.add('hide'); 
@@ -83,15 +97,15 @@ function getClothesSubcategory(mycategory) {
 	if (mycategory=="jackets") {
 		topsCheckbox.classList.add('hide');
 	    bottomsCheckbox.classList.add('hide'); 
-	    sweatersCheckbox.classList.remove('hide'); 
-	    jacketsCheckbox.classList.add('hide'); 
+	    sweatersCheckbox.classList.add('hide'); 
+	    jacketsCheckbox.classList.remove('hide'); 
 	    dressesCheckbox.classList.add('hide'); 
 	}
 	if (mycategory=="sweaters") {
 		topsCheckbox.classList.add('hide');
 	    bottomsCheckbox.classList.add('hide'); 
-	    sweatersCheckbox.classList.add('hide'); 
-	    jacketsCheckbox.classList.remove('hide'); 
+	    sweatersCheckbox.classList.remove('hide'); 
+	    jacketsCheckbox.classList.add('hide'); 
 	    dressesCheckbox.classList.add('hide'); 
 	}
 	if (mycategory=="dresses") {
@@ -123,6 +137,7 @@ function getClothesSubcategory(mycategory) {
 					<option value="None">-- Select Category --</option>
 					<option value="Clothes" >Clothes</option>
 					<option value="Bags" >Bags</option>
+					<option value="Shoes">Shoes</option>
 					<option value="Accessories">Accessories</option>
 				</select>
 			</div>
@@ -131,17 +146,22 @@ function getClothesSubcategory(mycategory) {
 			    <p>
 			        <label><input type="radio" name="subcategory" value="tops" onclick="getClothesSubcategory('tops')"/> tops</label>
 			        <label><input type="radio" name="subcategory" value="bottoms" onclick="getClothesSubcategory('bottoms')"/> bottoms</label>
-			        <label><input type="radio" name="subcategory" value="jackets" onclick="getClothesSubcategory('jackets')"/> jackets</label>
+			        <label><input type="radio" name="subcategory" value="outerwear" onclick="getClothesSubcategory('jackets')"/> outerwear</label>
 			        <label><input type="radio" name="subcategory" value="sweaters" onclick="getClothesSubcategory('sweaters')"/> sweaters</label>
 			        <label><input type="radio" name="subcategory" value="dresses" onclick="getClothesSubcategory('dresses')"/> dresses</label>
+			        <label><input type="radio" name="subcategory" value="swim" /> swim</label>
+			    
 			    </p>
 			    
 		    </fieldset>
 		    <fieldset class="hide" id="bagsCheckbox" name="bagsCheckbox">
 			    <p>Choose subcategories of bags for your item.</p>
 			    <p>
+			        <label><input type="radio" name="subcategory" value="shoulder" /> shoulder</label>
+			        <label><input type="radio" name="subcategory" value="backpacks" /> backpacks</label>
 			        <label><input type="radio" name="subcategory" value="crossbody" /> crossbody</label>
-			        <label><input type="radio" name="subcategory" value="handle" /> handle</label>
+			        <label><input type="radio" name="subcategory" value="totes" /> totes</label>
+			        <label><input type="radio" name="subcategory" value="crutches" /> crutches</label>
 			    </p>
 			    
 		    </fieldset>
@@ -149,9 +169,18 @@ function getClothesSubcategory(mycategory) {
 			    <p>Choose subcategories of accessories for your item.</p>
 			    <p>
 			        <input type="radio" name="subcategory" value="watches" > watches
-			        <input type="radio" name="subcategory" value="socks" > socks
+			        <input type="radio" name="subcategory" value="wallets" > wallets
 			        <input type="radio" name="subcategory" value="belts" > belts
-			        <input type="radio" name="subcategory" value="hair" > hair
+			        <input type="radio" name="subcategory" value="jewelry" > jewelry
+			        <input type="radio" name="subcategory" value="sunglasses" > sunglasses
+			     </p>
+		    </fieldset>
+		    <fieldset class="hide" id="shoesCheckbox" name="shoesCheckbox">
+			    <p>Choose subcategories of accessories for your item.</p>
+			    <p>
+			        <input type="radio" name="subcategory" value="sneakers" > sneakers
+			        <input type="radio" name="subcategory" value="sandals" > sandals
+			        <input type="radio" name="subcategory" value="flats" > flats
 			     </p>
 		    </fieldset>
 		    <fieldset class="hide" id="topsCheckbox">

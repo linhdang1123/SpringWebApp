@@ -2,17 +2,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<script>
+function saveAndSubmit(item){
+	document.getElementById("theCode").field=item;
+	document.getElementById("theCode").value=item;
+	document.getElementById("myForm").submit();
+}
+</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet" type="text/css" th:href="@{/css/homestyle.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/nav.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
+<style>
+.mySlides {
+	display: none;
+}
+</style>
 </head>
 <body>
+<th:block th:include="/_topnav"></th:block>
+<th:block th:include="/_nav"></th:block>
+<br><br>
 <h1>Hello</h1>
 
-<h1>We have received your <span th:utext=${item.name}></span>, belonging to the <span th:utext=${item.category}></span> category and <span th:utext=${item.subcategory}></span> subcategory.
+<h1><span th:utext=${message}></span> Your item is <span th:utext=${item.name}></span>, belonging to the <span th:utext=${item.category}></span> category and <span th:utext=${item.subcategory}></span> subcategory.
 It costs <span th:utext=${item.price}></span> dollars. Its description is <span th:utext=${item.description}></span>. It looks like 
 
 </h1>
-<img th:src="*{'data:image/jpg;base64,'+ image}" alt="#" />
+  <img th:src="*{'data:image/jpg;base64,'+ image}" alt="#" /> 
+  
+<h1>Other items by seller</h1>
+  <form id="myForm" enctype="multipart/form-data" method="POST" th:action="@{/updateItem}">
+ <input name="theCode" id="theCode" type="hidden" /><!--  th:field="${itemX.code}"/> -->
+  <div class="main">
+		<div class="grid" style="max-width: 1200px; margin-top: 35px">
+			<div class="row" >
+				<div class="column" th:each="itemX : ${otherSellerItems.list}">
+					<div class="content" >
+					     
+						<a href="" target="_blank"> <img
+							th:src="@{|/itemImage?code=${itemX.code}|}" 
+							alt=""
+							style="width: 280px; height: 320px; margin-bottom: 5px; margin-right: 2px;">
+						</a>
+						<div class="card-block">
+							<h4 class="card-title" th:utext="${itemX.name}"></h4>
+							<p class="card-text" th:utext="${itemX.price}"></p>
+							<!--  <a th:href="@{|/updateItem?code=${itemX.code}|}" >Update</a>-->
+					  		<button th:onclick="|saveAndSubmit('${itemX.code}')|">Update</button>
+						</div>
+					</div> 
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="row">
+				<div class="col-lg-6 offset-4">
+					<div class="" th:if="${otherSellerItems.totalPages > 1}">
+						<th:block th:each="page : ${otherSellerItems.navigationPages}">
+
+							<a th:href="@{|/item_success?page=${page}&code=${item.code}|}" th:if="${page != -1}"
+								class="btn btn-dark" style="border-radius: 0%; margin: 2px;"
+								th:utext="${page}"></a>
+
+							<span class="btn btn-dark"
+								style="border-radius: 0%; margin: 2px;" th:if="${page == -1}">
+								... </span>
+						</th:block>
+					</div>
+				</div>
+			</div>
+  	</form>
 </body>
 </html>

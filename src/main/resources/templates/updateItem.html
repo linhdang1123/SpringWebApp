@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Sign Up</title>
+<link rel="stylesheet" type="text/css" th:href="@{/uploadItem.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" />
+</head>
+<body>
+
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+		<form th:object="${itemForm}" enctype="multipart/form-data" method="POST" th:action="@{/update_success}">
+
+			<h1>Form</h1>
+			<div class="social-container">
+			</div>
+			<h1>The current item is <span th:utext=${item.name}></span>, belonging to the <span th:utext=${item.category}></span> category and <span th:utext=${item.subcategory}></span> subcategory.
+			It costs <span th:utext=${item.price}></span> dollars. Its description is <span th:utext=${item.description}></span>. You can update it below. 
+
+</h1>
+			<input type="text" placeholder="Replace ${item.name} (Name)" name = "name"/>
+			<input type="number" step="0.01" placeholder="Replace ${item.price} (Price)"  name = "price"/>
+      		<input type="text" placeholder="Replace ${item.description} (Description)" name = "description"/>
+       		<input type="hidden" th:field="${item.code}"/>
+
+			<button type="submit">Update Item Information</button>
+		</form>
+	</div>
+</div>
+</body>
+</html>

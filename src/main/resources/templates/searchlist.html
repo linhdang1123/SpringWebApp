@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/homestyle.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/nav.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
+<style>
+.mySlides {
+	display: none;
+}
+</style>
+</head>
+<body>
+	<th:block th:include="/_topnav"></th:block>
+	<th:block th:include="/_nav"></th:block>
+	<div class="main">
+		<div class="grid" style="max-width: 1200px; margin-top: 35px">
+			<div class="row" >
+				<div class="column" th:each="item : ${paginationItems.list}">
+					<div class="content" >
+						<a th:href="@{|/item?itemcode=${item.code}|}" > <img
+							th:src="@{|/itemImage?code=${item.code}|}" 
+							alt=""
+							style="width: 280px; height: 320px; margin-bottom: 5px; margin-right: 2px;">
+						</a>
+						<div class="card-block">
+							<h4 class="card-title" style = "font-style : bold;"  th:utext="${item.name}"></h4>
+							<p class="card-text" style = "font-style : bold;" th:text="${'$'+item.price}" ></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-lg-6 offset-4">
+					<div class="" th:if="${paginationItems.totalPages > 1}">
+						<th:block th:each="page : ${paginationItems.navigationPages}">
+
+							<a th:href="@{|/searchItem?page=${page}&likeName=${likeName}|}" th:if="${page != -1}"
+								class="btn btn-dark" style="border-radius: 0%; margin: 2px;"
+								th:utext="${page}"></a>
+
+							<span class="btn btn-dark"
+								style="border-radius: 0%; margin: 2px;" th:if="${page == -1}">
+								... </span>
+						</th:block>
+					</div>
+				</div>
+			</div>
+	</div>
+
+
+	<script type="text/javascript" th:src="@{/js/myslides.js}"></script>
+
+
+</body>
+</html>
