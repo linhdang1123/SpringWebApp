@@ -1,18 +1,11 @@
 package com.example.demo.bean;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.text.DateFormat;  
-import java.text.SimpleDateFormat;  
-import java.util.Date;  
-import java.util.Calendar;
-import java.util.Random;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "items")

@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/cart.css}" />
 <link rel="stylesheet" type="text/css"
 	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
-<title>Basket</title>
+<title>Order Confirmation</title>
 <style>
 .panel {
 	padding: 20px;
@@ -30,16 +30,24 @@
 	font-weight: bold;
 	color: black;
 }
-.promo-btn{
-  display: inline-block;
-  background-color: black;
-  border-radius: 2px;
-  font-size: 10px;
-  color: #FFFFFF;
-  padding: 9px 16px;
+
+.col-50 {
+float: left;
+  width: 50%;
+  padding: 10px;
 }
-.promo-btn:hover{
-background-color : #404040;
+.col-50 a {
+  background-color: transparent;
+  color: #777;
+  float: none;
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.customerInfo{
+padding: 0 1rem; text-align: left; font-size: 15px; padding-bottom: 10px; font-family: Arial, Helvetica, sans-seri
+display: table;
+clear: both;
 }
 </style>
 </head>
@@ -48,12 +56,7 @@ background-color : #404040;
 	<th:block th:include="/_topnav"></th:block>
 	<th:block th:include="/_nav"></th:block>
 
-
-	<div class="main">
-		<th:block th:if="${cartEmpty != null}"  >
-			<h2 style="text-align: center;" th:utext="${cartEmpty}">There is no items in Cart <br></h2>
-			<br>
-		</th:block>	
+	<div class="main" >
 		<div>
 			<a class="panel" th:href="@{/productlist}"> <span
 				class="shopbutton">Continue Shopping</span>
@@ -65,17 +68,34 @@ background-color : #404040;
 			<br>
 			<h1
 				style="padding: 0 1rem;; text-align: left; font-size: 30px; padding-bottom: 10px; font-family: Arial, Helvetica, sans-serif;">
-				Your Bag</h1>
-			<div class="basket">
-				<div class="basket-module">
-				<form th:object="${promoCode}" method="POST" th:action="@{/promoCodeSearch}">
-					<label for="promo-code">Enter a promotional code (for testing : DANDAN, LINDAN)</label>
-					 <input id="promo-code" type="text" th:field="*{promoCode}"  maxlength="100"
-						class="promo-code-field">
-					<input type = "submit" value = "Apply" class="promo-btn"> 
-					<label style="color : red; text-align :center;" th:if="${promoCodeMessage != null}" th:utext="${promoCodeMessage}"></label>
-				</form>	
+				Review Your Order</h1>
+				
+				<div class="customerInfo">
+				
+					<div class ="col-50">
+						<h3>Billing Address</h3>
+						<p th:text="${myCart.customerInfo.billingAddress.name}"></p>
+						<p th:text="${myCart.customerInfo.billingAddress.address + '.'}"></p>
+						<p th:text="${ myCart.customerInfo.billingAddress.city + ', ' +  myCart.customerInfo.billingAddress.state + ' ' + myCart.customerInfo.billingAddress.zipCode }"></p>
+						<p>US</p>
+						<p></p>
+						<a th:href="@{/checkout}" > Edit</a>
+					</div>
+					<div class = "col-50">
+					<h3>Shipping To</h3>
+						<p th:text="${myCart.customerInfo.shippingAddress.name}"></p>
+						<p th:text="${myCart.customerInfo.shippingAddress.address + '.'}"></p>
+						<p th:text="${ myCart.customerInfo.shippingAddress.city + ', ' +  myCart.customerInfo.shippingAddress.state + ' ' + myCart.customerInfo.shippingAddress.zipCode }"></p>
+						<p>US</p>
+						<p></p>
+						<a th:href="@{/checkout}" > Edit</a>
+			   		</div>
+					
+					
 				</div>
+				
+			<div class="basket" style = "width : 500px; width : 100%;">
+	
 				<div class="basket-labels">
 					<ul>
 						<li class="item item-heading">Item</li>
@@ -88,42 +108,38 @@ background-color : #404040;
 					th:each="cartItem : ${cartForm.cartItems}">
 					<div class="item">
 						<div class="product-image">
-							<a th:href="@{|/item?itemcode=${cartItem.itemDetails.code}|}"> <img
+							<a th:href="@{|/item?itemcode=${cartItem.itemDetails.code}|}"> <img style = "width : 35%;"
 								th:src="@{|/itemImage?code=${cartItem.itemDetails.code}|}"
 								alt="Placholder Image 2" class="product-frame">
 							</a>
+					
 						</div>
 						<div class="product-details">
 							<h1>
-								<strong style="font-size :16px;" th:utext="${cartItem.itemDetails.name}"><span
+								<strong style="font-size :13px;" th:utext="${cartItem.itemDetails.name}"><span
 									class="item-quantity" th:utext="${cartItem.quantity}"></span></strong>
 
 							</h1>
 							<p>
-								<strong th:utext="${cartItem.itemDetails.description}"></strong>
+								<strong style="font-size :13px;"  th:utext="${cartItem.itemDetails.description}"></strong>
 							</p>
-							<p th:utext="${'Product Code - ' + cartItem.itemDetails.code}">Product
+							<p style="font-size :12px;"  th:utext="${'Product Code - ' + cartItem.itemDetails.code}">Product
 								Code </p>
 						</div>
 					</div>
-					<div class="price" th:utext="${cartItem.itemDetails.price}"></div>
-					<div class="quantity">
-						<input type="number" th:value="${cartItem.quantity}" min="1" class="quantity-field">
+					<div class="price" style="font-size :13px;"  th:utext="${cartItem.itemDetails.price}"></div>
+					<div class="quantity" style="font-size :13px;"  th:utext="${cartItem.quantity}">
+						
 					</div>
-					<div class="subtotal" th:utext="${cartItem.amount}"></div>
-					<div class="remove">
-						<a th:href="@{|/removeCartItem?code=${cartItem.itemDetails.code}|}" > Remove</a>
-					</div>
+					<div class="subtotal" style="font-size :13px;" th:utext="${cartItem.amount}"></div>
 				</div>
 
 			</div>
-			<aside>
-				<div class="summary">
-					<div class="summary-total-items">
-						<span class="total-items" th:utext="${'Items in your Bag (' + myCart.totalQuantity + ')'}"></span>
-					</div>
+			<div class="basket-product" style = "width : 35%;float : right; -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;">
 					<div class="summary-subtotal">
-				<div class="subtotal-title" th:utext="${'Subtotal (' + myCart.totalQuantity + ')'}">Subtotal</div>
+						<div class="subtotal-title" th:utext="${'Subtotal (' + myCart.totalQuantity + ')'}">Subtotal</div>
 						<div class="subtotal-value final-value" id="basket-subtotal"
 							th:utext="${myCart.totalAmount}"></div>
 							<!--using promo template for tax -->
@@ -148,13 +164,13 @@ background-color : #404040;
 						<div class="total-value final-value" id="basket-total" th:utext="${total}"></div>
 					</div>
 					<div class="summary-checkout">
-						<a th:href="@{/checkout}">
+						<a th:href="@{/finalize_order}">
 						<button class="checkout-cta">PLACE ORDER</button>
 						</a>
 						
 					</div>
 				</div>
-			</aside>
+		
 	</div>
 	</th:block>
 

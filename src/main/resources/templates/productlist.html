@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Product List</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/homestyle.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/nav.css}" />
 <link rel="stylesheet" type="text/css"
@@ -11,39 +11,99 @@
 .mySlides {
 	display: none;
 }
+.page-btn{
+  text-align : center;
+  display: inline-block;
+  background-color: white;
+  border-radius : 0 ;
+  border: 1px solid black;
+  font-size: 15px;
+  color: black;
+  text-decoration: none;
+  padding: 15px 15px;
+  transition: all .5s;
+}
+.page-btn:hover {
+  background-color: black;
+  color :white;
+}
+.active-page-btn{
+ text-align : center;
+  display: inline-block;
+  border-radius : 0 ;
+  border: 1px solid black;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 15px 15px;
+  transition: all .5s;
+  background-color: black;
+  color :white;
+}
+.emptyCart{
+ border-bottom: 1px solid #E3E3E3;
+  border-radius : 0; 
+}
 </style>
 </head>
 <body>
 	<th:block th:include="/_topnav"></th:block>
 	<th:block th:include="/_nav"></th:block>
 	<div class="main">
+		<th:block th:if="${cartEmpty != null && cartEmpty != ''}" >
+		<div class="emptyCart">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		<h2 style="text-align: center;" th:utext="${cartEmpty}"><br></h2>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+		</th:block>	
 		<div class="grid" style="max-width: 1200px; margin-top: 35px">
-			<div class="row" >
+			<div class="row">
 				<div class="column" th:each="item : ${paginationItems.list}">
-					<div class="content" >
-						<a th:href="@{|/item?itemcode=${item.code}|}" > <img
-							th:src="@{|/itemImage?code=${item.code}|}" 
-							alt=""
+					<div class="content" style = "  border-bottom: 1px solid #E3E3E3;
+  border-radius : 0; ">
+						<a th:href="@{|/item?itemcode=${item.code}|}"> <img
+							th:src="@{|/itemImage?code=${item.code}|}" alt=""
 							style="width: 280px; height: 320px; margin-bottom: 5px; margin-right: 2px;">
 						</a>
 						<div class="card-block">
-							<h4 class="card-title" style = "font-style : bold;"  th:utext="${item.name}"></h4>
-							<p class="card-text" style = "font-style : bold;" th:text="${'$'+item.price}" ></p>
+							<h4 class="card-title" style="font-style: bold;"
+								th:utext="${item.name}"></h4>
+							<p class="card-text" style="font-style: bold;"
+								th:text="${'$'+item.price}"></p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div style="text-align: right;">
 				<div class="col-lg-6 offset-4">
 					<div class="" th:if="${paginationItems.totalPages > 1}">
 						<th:block th:each="page : ${paginationItems.navigationPages}">
-
-							<a th:href="@{|/productlist?page=${page}|}" th:if="${page != -1}"
-								class="btn btn-dark" style="border-radius: 0%; margin: 2px;"
+							<a th:href="@{|/productlist?page=${page}|}" th:if="${page != -1 && page != pageNumber}"
+								class="page-btn" 
 								th:utext="${page}"></a>
+							<a th:href="@{|/productlist?page=${page}|}" th:if="${page == pageNumber}"
+								class="active-page-btn" 
+								th:utext="${pageNumber}"></a>	
 
-							<span class="btn btn-dark"
+							<span class="page-btn"
 								style="border-radius: 0%; margin: 2px;" th:if="${page == -1}">
 								... </span>
 						</th:block>

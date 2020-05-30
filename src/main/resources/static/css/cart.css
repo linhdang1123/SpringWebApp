@@ -59,8 +59,7 @@ button,
 .price:before,
 .subtotal:before,
 .subtotal-value:before,
-.total-value:before,
-.promo-value:before {
+.total-value:before{
   content: '$';
 }
 
@@ -165,12 +164,13 @@ li.subtotal:before {
   width: 45%;
 }
 
-.remove button {
+.remove a{
   background-color: transparent;
   color: #777;
   float: none;
   text-decoration: underline;
   text-transform: uppercase;
+  font-size : 11px;
 }
 
 .item-heading {
@@ -215,11 +215,12 @@ li.subtotal:before {
 }
 
 aside {
+
   float: right;
   position: relative;
   width: 30%;
   padding-top: 65px;
-  padding-left: 150px;
+  padding-left: 120px;
 }
 
 .summary {

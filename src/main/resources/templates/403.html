@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>Access Denied</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/homestyle.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/nav.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}" />
+<link rel="stylesheet" th:href="@{http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" />
+   </head>
+    
+   <body>
+    
+      <th:block th:include="/_topnav"></th:block>
+	  <th:block th:include="/_nav"></th:block>
+       
+      <div class="page-title">Access Denied!</div>
+      <h3 style="color:red;">Sorry, you can not access this page!</h3>
+       
+      <th:block th:include="/_footer"></th:block>
+      	<footer class="footer-distributed">
+ 
+		<div class="footer-left">
+ 
+		<h3>SPRINGIO<span></span></h3>
+ 
+		<p class="footer-links">
+		<a href="#">Home</a>
+	·
+		<a href="#">Blog</a>
+	·
+		<a href="#">Pricing</a>
+	·
+		<a href="#">About</a>
+	·
+		<a href="#">Faq</a>
+	·
+		<a href="#">Contact</a>
+		</p>
+ 
+		<p class="footer-company-name">SPRINGIO &copy; 2020</p>
+		</div>
+ 
+		<div class="footer-center">
+ 
+		<div>
+		<i class="fa fa-map-marker"></i>
+		<p><span>123 DREAMER ST</span> NEW YORK, NEW YORK</p>
+		</div>
+ 
+		<div>
+		<i class="fa fa-phone"></i>
+		<p>+1 555 123456</p>
+		</div>
+ 
+		<div>
+		<i class="fa fa-envelope"></i>
+		<p><a href="mailto:support@company.com">contact@springio.com</a></p>
+		</div>
+ 
+		</div>
+ 
+		<div class="footer-right">
+ 
+		<p class="footer-company-about">
+		<span>About the company</span>
+	SPRINGIO is a private shopping web site &amp; a place where you can make money out of closet.
+		</p>
+ 
+		<div class="footer-icons">
+ 
+		<a href="#"><i class="fa fa-facebook"></i></a>
+		<a href="#"><i class="fa fa-twitter"></i></a>
+		<a href="#"><i class="fa fa-linkedin"></i></a>
+		<a href="#"><i class="fa fa-github"></i></a>
+ 
+		</div>
+ 
+		</div>
+ 
+		</footer>
+       
+   </body>
+</html>

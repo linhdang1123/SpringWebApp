@@ -1,26 +1,37 @@
 package com.example.demo.util;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-
 import com.example.demo.Model.CartInfo;
-import com.example.demo.bean.User;
-import com.example.demo.dao.UserDAO;
+import com.example.demo.bean.PromoCode;
 
 public class Utils {
+
 	public static CartInfo getCartInSession(HttpServletRequest request) {
-		
+
 		CartInfo cartInfo = (CartInfo) request.getSession().getAttribute("myCart");
-		if(cartInfo == null) {
+		if (cartInfo == null) {
 			cartInfo = new CartInfo();
 			request.getSession().setAttribute("myCart", cartInfo);
 		}
 		return cartInfo;
-		
+
 	}
-	
+
+	public static void removeCartInSession(HttpServletRequest request) {
+		request.getSession().removeAttribute("myCart");
+	}
+
+	public static void storeLastOrderedCartInSession(HttpServletRequest request, CartInfo cartInfo) {
+		request.getSession().setAttribute("lastOrderedCart", cartInfo);
+	}
+
+	public static CartInfo getLastOrderedCartInSession(HttpServletRequest request) {
+		return (CartInfo) request.getSession().getAttribute("lastOrderedCart");
+	}
+
 }

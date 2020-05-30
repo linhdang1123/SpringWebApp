@@ -11,7 +11,12 @@
 		</th:block>
 			<li style = " float: right;"><a th:href="@{/cart}"><i class="fa fa-shopping-cart fa-2x"><b style = "font-size : 15px;"></b></i></a></li>
 		<th:block sec:authorize="!isAuthenticated()">
-		<li><a th:href="@{/login}">Sign up</a></li>
+		<li><a th:href="@{/registration}">Sign up</a></li>
+		</th:block>
+		<th:block sec:authorize="isAuthenticated()">
+			<li style = " float: right;"><a th:href="@{/cart}"><i class="fa fa-bell-o fa-2x"><b style = "font-size : 15px;"></b></i></a></li>
+			<li style = " float: right;"><a th:href="@{/cart}"><i class="fa fa fa-envelope-o fa-2x"><b style = "font-size : 15px;"></b></i></a></li>
+			<li style = "float : right;"><a th:href="@{/item_success}">My Products</a></li>
 		</th:block>
 		<li><a href="#contact">Contact</a></li>
 		<li><a href="#contact"></a></li>
@@ -26,7 +31,6 @@
 				</button>
 			</div>
 		</li>
-		<li style = "float : right;"><a th:href="@{/uploadItem}">My Products</a></li>
 		<li style = "float : right;"><a th:href="@{/uploadItem}">Start Selling</a></li>
 
 	</ul>

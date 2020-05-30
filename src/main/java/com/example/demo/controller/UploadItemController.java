@@ -56,7 +56,7 @@ public class UploadItemController {
 	@RequestMapping(value ={ "/productlist" })
 	public String displayItem(Model model, //
 	         @RequestParam(value = "name", defaultValue = "") String likeName,
-	         @RequestParam(value = "page", defaultValue = "1") int page) {
+	         @RequestParam(value = "page", defaultValue = "1") int page, HttpServletRequest request,@ModelAttribute("cartEmpty") String message) {
 		System.out.println("likeName : " +likeName + ", page :" + page);
 	    final int maxResult = 8;
 	    final int maxNavigationPage = 100;
@@ -64,6 +64,8 @@ public class UploadItemController {
 	    PaginationResult<ItemDetails> result = itemDAO.queryProducts(page, //
 	    maxResult, maxNavigationPage);
 	    model.addAttribute("paginationItems", result);
+	    model.addAttribute("pageNumber",page);
+
 	    return "productlist";
 	}
 	@RequestMapping(value = {"/itemImage"}, method = RequestMethod.GET)

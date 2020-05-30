@@ -5,15 +5,34 @@ import java.util.List;
 
 public class CartInfo {
 	private int orderNum;
+	private CustomerInfo customerInfo;
+	private double promoCodeValue = 0;
 	private final List<CartItemDetails> cartItems = new ArrayList<>();
 	public CartInfo() {
 		
 	}
+
+	
+	public double getPromoCodeValue() {
+		return promoCodeValue;
+	}
+
+	public void setPromoCodeValue(double promoCodeValue) {
+		this.promoCodeValue = promoCodeValue;
+	}
+
 	public int getOrderNum() {
 		return orderNum;
 	}
 	public void setOrderNum(int orderNum) {
 		this.orderNum = orderNum;
+	}
+
+	public CustomerInfo getCustomerInfo() {
+		return customerInfo;
+	}
+	public void setCustomerInfo(CustomerInfo customerInfo) {
+		this.customerInfo = customerInfo;
 	}
 	public List<CartItemDetails> getCartItems() {
 		return cartItems;
@@ -39,6 +58,10 @@ public class CartInfo {
 		}else {
 			cartItem.setQuantity(newQuantity);
 		}
+	}
+	public boolean removeProduct(ItemDetails itemDetails) {
+		CartItemDetails item = findCartItemByCode(itemDetails.getCode());
+		return cartItems.remove(item);
 	}
 	public boolean isEmpty() {
 		return this.cartItems.isEmpty();
