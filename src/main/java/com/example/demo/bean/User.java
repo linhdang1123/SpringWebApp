@@ -1,14 +1,12 @@
 package com.example.demo.bean;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "users")

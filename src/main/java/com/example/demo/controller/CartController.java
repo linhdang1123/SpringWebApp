@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import com.example.demo.Model.PromoCodeField;
 import com.example.demo.bean.Item;
 import com.example.demo.bean.PromoCode;
 import com.example.demo.dao.ItemDAO;
+import com.example.demo.dao.OrderDAO;
 import com.example.demo.dao.PromoCodeDAO;
 import com.example.demo.util.Utils;
 
@@ -30,6 +33,8 @@ public class CartController {
 	ItemDAO itemDAO;
 	@Autowired
 	PromoCodeDAO promoCodeDAO;
+	@Autowired
+	OrderDAO orderDAO;
 
 	// showing cart items
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
@@ -77,7 +82,7 @@ public class CartController {
 
 		return "redirect:/cart";
 	}
-
+	//remove item in cart
 	@RequestMapping({ "/removeCartItem" })
 	public String removeCartItem(HttpServletRequest request, Model model,
 			@RequestParam(value = "code", defaultValue = "") int code) {
@@ -90,7 +95,7 @@ public class CartController {
 		}
 		return "redirect:/cart";
 	}
-
+	//search promocode
 	@RequestMapping(value = { "/promoCodeSearch" }, method = RequestMethod.POST)
 	public String promoCodeSearch(HttpServletRequest request, Model model,
 			@ModelAttribute("promoCode") PromoCodeField promoCode, RedirectAttributes redirectAttributes) {
@@ -136,7 +141,7 @@ public class CartController {
 		return "checkout";
 	}
 
-	// POST : save Customer Info
+	// POST : save Customer Info, and show review order page
 	@RequestMapping(value = { "/checkout" }, method = RequestMethod.POST)
 	public String saveCustomerInfo(Model model, HttpServletRequest request,
 			@ModelAttribute("checkOutForm") CustomerInfo customerInfo) {
@@ -159,12 +164,19 @@ public class CartController {
 
 		return "orderconfirmation";
 	}
-
+	// finalize order, show order confirmation
 	@RequestMapping(value = { "/finalize_order" }, method = RequestMethod.GET)
 	public String finalizeOrder(Model model, HttpServletRequest request) {
-		Utils.storeLastOrderedCartInSession(request, Utils.getCartInSession(request));
+		CartInfo currentCart = Utils.getCartInSession(request);
+		try {
+			orderDAO.saveOrder(currentCart);
+		}catch(Exception e) {
+			return "orderconfirmation";
+		}
+		Utils.storeLastOrderedCartInSession(request, currentCart);
 		Utils.removeCartInSession(request);
 		CartInfo cartInfo = Utils.getLastOrderedCartInSession(request);
+		if(cartInfo == null) return "redirect:/cart";
 		double tax = cartInfo.getTotalAmount() * 0.05;
 		double shippingFee = 12;
 		double total = cartInfo.getTotalAmount() + tax + shippingFee - cartInfo.getPromoCodeValue();
@@ -174,6 +186,9 @@ public class CartController {
 		model.addAttribute("total", String.format("%.2f", total));
 		model.addAttribute("tax", String.format("%.2f", tax));
 		model.addAttribute("shippingFee", shippingFee);
+		model.addAttribute("order_number", "" + cartInfo.getOrderNum());
+		model.addAttribute("order_date", new Date().toGMTString());
+		
 		return "finalize_order";
 
 	}

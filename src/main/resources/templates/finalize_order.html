@@ -90,15 +90,15 @@ clear: both;
 								Order Number:  
 							</td>
 							<td >
-								<b>#123456789</b>
+								<b  th:utext="${'#'+order_number}"></b>
 							</td>
 						</tr>
 					    <tr>
 							<td>
 								Order Date:  
 							</td>
-							<td>
-								5/29/2020
+							<td th:utext="${order_date}">
+								
 							</td>
 						</tr>
 						

@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+
 public class Address {
 	private String name;
 	private String email;
@@ -7,10 +8,11 @@ public class Address {
 	private String city;
 	private String state;
 	private String zipCode;
+	private String phoneNumber;
 	
 
-	public Address(String name, String email, String address, String city, String state, String zipCode) {
-		super();
+	public Address(String name, String email, String phoneNumber, String address, String city, String state, String zipCode) {
+		this.phoneNumber = phoneNumber;
 		this.name = name;
 		this.email = email;
 		this.address = address;
@@ -19,6 +21,14 @@ public class Address {
 		this.zipCode = zipCode;
 	}
 	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -65,9 +75,11 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [name=" + name + ", email=" + email + ", address=" + address + ", city=" + city + ", state="
-				+ state + ", zipCode=" + zipCode + "]";
+		return "name=" + name + ", address=" + address + ", city=" + city + ", state=" + state + ", zipCode="
+				+ zipCode ;
 	}
+
+
 	
 	
 	
